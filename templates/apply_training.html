@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply For Training</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#eef2f7;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    background:#0d6efd;
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:yellow;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+    width:100%;
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* FORM CARD */
+
+.form-box{
+    width:700px;
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+
+.form-box h1{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:50px;
+    color:#0d6efd;
+}
+
+/* INPUTS */
+
+.input-box{
+    margin-bottom:25px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:10px;
+    color:#333;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.input-box input{
+    width:100%;
+    padding:16px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:17px;
+    transition:0.3s;
+}
+
+.input-box input:focus{
+    border-color:#0d6efd;
+    outline:none;
+    box-shadow:0 0 10px rgba(13,110,253,0.2);
+}
+
+/* SUBMIT BUTTON */
+
+button{
+    width:100%;
+    padding:16px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#084298;
+    transform:translateY(-2px);
+}
+
+/* AERO BACK BUTTON */
+
+.back-btn{
+    position:fixed;
+    top:110px;
+    left:40px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.3);
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#0d6efd;
+    font-size:34px;
+    font-weight:bold;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    transform:translateY(-5px) scale(1.08);
+    background:#0d6efd;
+    color:white;
+    box-shadow:0 12px 30px rgba(13,110,253,0.35);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    nav{
+        padding:18px 20px;
+    }
+
+    .menu a{
+        margin-left:12px;
+        font-size:15px;
+    }
+
+    .form-box{
+        width:100%;
+        padding:30px;
+    }
+
+    .form-box h1{
+        font-size:36px;
+    }
+
+    .back-btn{
+        width:55px;
+        height:55px;
+        left:15px;
+        top:95px;
+        font-size:28px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+
+<a href="{% url 'student_dashboard' %}" class="back-btn">
+    ←
+</a>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ITMS
+    </div>
+
+    <div class="menu">
+
+        <a href="{% url 'student_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'profile' %}">
+            Profile
+        </a>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- FORM SECTION -->
+
+<div class="container">
+
+    <div class="form-box">
+
+        <h1>
+            Apply For Training
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-box">
+
+                <label>
+                    Student Name
+                </label>
+
+                <input type="text"
+                       name="student_name"
+                       placeholder="Enter Student Name">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input type="email"
+                       name="email"
+                       placeholder="Enter Email">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Company Name
+                </label>
+
+                <input type="text"
+                       name="company_name"
+                       placeholder="Enter Company Name">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Technology
+                </label>
+
+                <input type="text"
+                       name="technology"
+                       placeholder="Enter Technology">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>
+                    Duration
+                </label>
+
+                <input type="text"
+                       name="duration"
+                       placeholder="Enter Duration">
+
+            </div>
+
+            <button type="submit">
+                Submit Application
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Attendance</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+
+h1{
+    text-align:center;
+    margin-bottom:40px;
+    color:#0d6efd;
+    font-size:45px;
+}
+
+/* DATE */
+
+.date-box{
+    margin-bottom:30px;
+}
+
+.date-box input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:18px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#0d6efd;
+    color:white;
+    padding:18px;
+    font-size:20px;
+}
+
+table td{
+    padding:18px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+    font-size:18px;
+}
+
+table tr:hover{
+    background:#f4f7fb;
+}
+
+/* SELECT */
+
+select{
+    padding:10px 18px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    margin-top:30px;
+    padding:16px;
+    border:none;
+    background:#0d6efd;
+    color:white;
+    font-size:20px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#084298;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    position:fixed;
+    top:90px;
+    left:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.3);
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#0d6efd;
+    font-size:34px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#0d6efd;
+    color:white;
+    transform:scale(1.08);
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+
+<a href="{% url 'admin_dashboard' %}" class="back-btn">
+    ←
+</a>
+
+<div class="container">
+
+    <h1>
+        Add Attendance
+    </h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="date-box">
+
+            <input type="date" name="date">
+
+        </div>
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Student Name
+                </th>
+
+                <th>
+                    Attendance Status
+                </th>
+
+            </tr>
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>
+                    {{ student.name }}
+                </td>
+
+                <td>
+
+                    <select name="{{ student.name }}">
+
+                        <option value="Present">
+                            Present
+                        </option>
+
+                        <option value="Absent">
+                            Absent
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <button type="submit">
+            Save Attendance
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

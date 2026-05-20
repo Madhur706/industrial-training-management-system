@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+
+        body{
+            display:flex;
+            background:#f4f7fb;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar{
+            width:250px;
+            height:100vh;
+            background:#212529;
+            padding:30px 20px;
+            position:fixed;
+        }
+
+        .sidebar h2{
+            color:white;
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:15px;
+            margin-bottom:10px;
+            border-radius:8px;
+            transition:0.3s;
+        }
+
+        .sidebar a:hover{
+            background:white;
+            color:#212529;
+        }
+
+        /* MAIN */
+
+        .main{
+            margin-left:250px;
+            width:100%;
+            padding:40px;
+        }
+
+        .top{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:40px;
+        }
+
+        .top h1{
+            color:#222;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:25px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            color:#0d6efd;
+            margin-bottom:15px;
+        }
+
+        .card p{
+            color:#555;
+            line-height:1.6;
+        }
+
+.back-btn:hover{
+    background:#084298;
+}
+.card-link{
+    text-decoration:none;
+}
+    </style>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <h2>
+    Trainer 
+    </h2>
+
+    <a href="">
+        Dashboard
+    </a>
+
+    
+
+   <a href="{% url 'training_list' %}">
+    Training Requests
+</a>
+
+    <a href="{% url 'add_attendance' %}">
+    Attendance
+</a>
+
+    <a href="{% url 'upload_certificate' %}">
+    Certificates
+</a>
+
+   <a href="{% url 'report_list' %}">
+    Reports
+</a>
+
+   <a href="{% url 'logout' %}">
+    Logout
+</a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="top">
+
+        <h1>
+            Welcome Admin
+        </h1>
+
+    </div>
+
+    <div class="cards">
+
+       <a href="{% url 'student_list' %}" class="card-link">
+
+    <div class="card">
+
+        <h2>
+            Total Students
+        </h2>
+
+        <p>
+            Manage all registered students.
+        </p>
+
+    </div>
+
+</a>
+
+       <a href="{% url 'training_list' %}" class="card-link">
+
+    <div class="card">
+
+        <h2>
+            Training Requests
+        </h2>
+
+        <p>
+            Approve or reject industrial training requests.
+        </p>
+
+    </div>
+
+</a>
+<a href="{% url 'add_attendance' %}" class="card-link">
+
+    <div class="card">
+
+        <h2>
+            Attendance
+        </h2>
+
+        <p>
+            Track student attendance records.
+        </p>
+
+    </div>
+
+</a>
+
+       <a href="{% url 'upload_certificate' %}" class="card-link">
+
+    <div class="card">
+
+        <h2>
+            Certificates
+        </h2>
+
+        <p>
+            Upload and manage completion certificates.
+        </p>
+
+    </div>
+
+</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

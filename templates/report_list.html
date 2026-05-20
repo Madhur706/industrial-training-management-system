@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Reports</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f7fb;
+            padding:40px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th, td{
+            border:1px solid #ddd;
+            padding:15px;
+            text-align:center;
+        }
+
+        th{
+            background:#0d6efd;
+            color:white;
+        }
+
+        a{
+            text-decoration:none;
+            color:#0d6efd;
+        }
+.back-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#0d6efd;
+    color:white;
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#084298;
+    transform:scale(1.08);
+}
+    </style>
+
+</head>
+<body>
+<a href="{% url 'admin_dashboard' %}" class="back-btn">
+    ←
+</a>
+<h1>
+    Uploaded Reports
+</h1>
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+        <th>Student Name</th>
+        <th>Report</th>
+
+    </tr>
+
+    {% for i in reports %}
+
+    <tr>
+
+        <td>{{ i.id }}</td>
+
+        <td>{{ i.student_name }}</td>
+
+        <td>
+
+            <a href="{{ i.report_file.url }}">
+                View Report
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    background:#0d6efd;
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:yellow;
+}
+
+/* LOGIN FORM */
+
+.container{
+    width:100%;
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:400px;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.box h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#222;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    font-size:18px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#084298;
+}
+
+.register-link{
+    text-align:center;
+    margin-top:20px;
+}
+
+.register-link a{
+    color:#0d6efd;
+    text-decoration:none;
+}
+
+/* MESSAGE BOX */
+
+.message{
+    padding:12px;
+    margin-bottom:20px;
+    border-radius:6px;
+    text-align:center;
+    font-size:16px;
+}
+
+/* SUCCESS MESSAGE */
+
+.success{
+    background:#d4edda;
+    color:#155724;
+}
+
+/* ERROR MESSAGE */
+
+.error{
+    background:#ffdddd;
+    color:#d8000c;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ITMS
+    </div>
+
+    <div class="menu">
+
+        <a href="{% url 'index' %}">
+            Home
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+        <a href="{% url 'register' %}">
+            Register
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- LOGIN FORM -->
+
+<div class="container">
+
+    <div class="box">
+
+        <h1>
+            Login
+        </h1>
+
+        <!-- MESSAGE -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <!-- FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email">
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password">
+
+            <select name="role">
+
+                <option value="Student">
+                    Student Login
+                </option>
+
+                <option value="Trainer">
+                    Trainer Login
+                </option>
+
+                <option value="Admin">
+                    Admin Login
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <!-- REGISTER -->
+
+        <div class="register-link">
+
+            Don't have an account?
+
+            <a href="{% url 'register' %}">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

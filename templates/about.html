@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    background:#0d6efd;
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:yellow;
+}
+
+/* ABOUT SECTION */
+
+.about{
+    width:100%;
+    padding:80px;
+}
+
+.about h1{
+    text-align:center;
+    font-size:50px;
+    color:#222;
+    margin-bottom:30px;
+}
+
+.about p{
+    font-size:22px;
+    color:#555;
+    line-height:1.8;
+    text-align:center;
+    width:85%;
+    margin:auto;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:70px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h2{
+    color:#0d6efd;
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:18px;
+    width:100%;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0d6efd;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ITMS
+    </div>
+
+    <div class="menu">
+
+        <a href="{% url 'index' %}">
+            Home
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+        <a href="{% url 'register' %}">
+            Register
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- ABOUT SECTION -->
+
+<section class="about">
+
+    <h1>
+        About Industrial Training Management System
+    </h1>
+
+    <p>
+        Industrial Training Management System is a web-based application
+        developed using Django. This system helps students and administrators
+        manage industrial training processes such as attendance management,
+        training applications, reports, certificates, and student records
+        efficiently and digitally.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h2>
+                Student Management
+            </h2>
+
+            <p>
+                Manage student registration, profiles, and training records.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                Attendance System
+            </h2>
+
+            <p>
+                Track daily attendance and monitor training progress.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                Certificate Management
+            </h2>
+
+            <p>
+                Upload and download industrial training certificates easily.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>
+        Industrial Training Management System
+    </h3>
+
+</footer>
+
+</body>
+</html>

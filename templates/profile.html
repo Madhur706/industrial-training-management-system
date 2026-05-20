@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#eef2f7;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    background:#0d6efd;
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:yellow;
+}
+
+/* PROFILE SECTION */
+
+.container{
+    width:100%;
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.profile-card{
+    width:800px;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* TOP */
+
+.top-section{
+    background:linear-gradient(135deg,#0d6efd,#4e9bff);
+    height:220px;
+    position:relative;
+}
+
+/* PROFILE IMAGE */
+
+.profile-img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:white;
+    position:absolute;
+    bottom:-80px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:6px solid white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.profile-img img{
+    width:90px;
+}
+
+/* CONTENT */
+
+.content{
+    padding:110px 50px 50px;
+    text-align:center;
+}
+
+.content h1{
+    font-size:38px;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.role{
+    color:#0d6efd;
+    font-size:20px;
+    margin-bottom:40px;
+    font-weight:bold;
+}
+
+/* INFO BOXES */
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.box{
+    background:#f4f7fb;
+    padding:25px;
+    border-radius:15px;
+    text-align:left;
+    transition:0.3s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+}
+
+.box h3{
+    color:#0d6efd;
+    margin-bottom:10px;
+}
+
+.box p{
+    color:#333;
+    font-size:18px;
+}
+
+/* BUTTON */
+
+/* AERO BACK BUTTON */
+
+.back-btn{
+    position:fixed;
+    top:100px;
+    left:35px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.3);
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#0d6efd;
+    font-size:34px;
+    font-weight:bold;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    transform:translateY(-5px) scale(1.08);
+    background:#0d6efd;
+    color:white;
+    box-shadow:0 12px 30px rgba(13,110,253,0.35);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .profile-card{
+        width:100%;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        padding:18px 20px;
+    }
+
+    .menu a{
+        margin-left:12px;
+        font-size:16px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ITMS
+    </div>
+
+    <div class="menu">
+
+        <a href="{% url 'student_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'profile' %}">
+            Profile
+        </a>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+<!-- PROFILE -->
+
+<div class="container">
+
+    <div class="profile-card">
+
+        <!-- TOP SECTION -->
+
+        <div class="top-section">
+
+            <div class="profile-img">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <h1>
+                {{ student.name }}
+            </h1>
+
+            <div class="role">
+                {{ student.role }}
+            </div>
+
+            <div class="info">
+
+                <div class="box">
+
+                    <h3>
+                        Full Name
+                    </h3>
+
+                    <p>
+                        {{ student.name }}
+                    </p>
+
+                </div>
+
+                <div class="box">
+
+                    <h3>
+                        Email Address
+                    </h3>
+
+                    <p>
+                        {{ student.email }}
+                    </p>
+
+                </div>
+
+                <div class="box">
+
+                    <h3>
+                        Role
+                    </h3>
+
+                    <p>
+                        {{ student.role }}
+                    </p>
+
+                </div>
+
+                <div class="box">
+
+                    <h3>
+                        System
+                    </h3>
+
+                    <p>
+                        Industrial Training Management
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- BACK BUTTON -->
+
+<a href="{% url 'student_dashboard' %}" class="back-btn">
+    ←
+</a>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
