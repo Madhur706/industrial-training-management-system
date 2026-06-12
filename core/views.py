@@ -238,7 +238,8 @@ def add_attendance(request):
         date = request.POST.get('date')
 
         for student in students:
-
+            print("POST DATA =", request.POST)
+            print("DATE =", date)
             status = request.POST.get(student.name)
 
             print(student.name, status)
