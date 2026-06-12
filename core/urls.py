@@ -45,7 +45,7 @@ urlpatterns = [
     path(
     'trainer-attendance/',
     views.trainer_attendance,
-    name='trainer_attendance'
+    name='admin_dashboard'
 )
 
 ]

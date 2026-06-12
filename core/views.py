@@ -250,7 +250,7 @@ def add_attendance(request):
                 status=status
             )
 
-        return redirect('trainer_dashboard')
+        return redirect('admin_dashboard')
 
     return render(
         request,
