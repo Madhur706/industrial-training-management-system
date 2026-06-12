@@ -254,7 +254,7 @@ def add_attendance(request):
 
     return render(
         request,
-        'add_attendance.html',
+        'admin_dashboard.html',
         {'students': students}
     )
 
