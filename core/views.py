@@ -237,9 +237,11 @@ def add_attendance(request):
 
         date = request.POST.get('date')
 
+        print("POST DATA =", request.POST)
+        print("DATE =", date)
+
         for student in students:
-            print("POST DATA =", request.POST)
-            print("DATE =", date)
+
             status = request.POST.get(student.name)
 
             print(student.name, status)
@@ -254,7 +256,7 @@ def add_attendance(request):
 
     return render(
         request,
-        'admin_dashboard.html',
+        'add_attendance.html',
         {'students': students}
     )
 
