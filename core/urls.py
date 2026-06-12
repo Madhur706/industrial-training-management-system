@@ -42,4 +42,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('student-list/', views.student_list, name='student_list'),
 
+    path(
+    'trainer-attendance/',
+    views.trainer_attendance,
+    name='trainer_attendance'
+)
+
 ]

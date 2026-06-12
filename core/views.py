@@ -250,13 +250,24 @@ def add_attendance(request):
                 status=status
             )
 
-        return redirect('attendance_list')
+        return redirect('trainer_dashboard')
 
     return render(
         request,
         'add_attendance.html',
         {'students': students}
     )
+
+def trainer_attendance(request):
+
+    attendance = Attendance.objects.all()
+
+    return render(
+        request,
+        'trainer_attendance.html',
+        {'attendance': attendance}
+    )
+
 def attendance_list(request):
 
     user_id = request.session.get('user_id')
