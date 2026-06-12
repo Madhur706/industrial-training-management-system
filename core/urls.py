@@ -43,8 +43,8 @@ urlpatterns = [
     path('student-list/', views.student_list, name='student_list'),
 
     path(
-    'trainer-attendance/',
-    views.trainer_attendance,
+    'admin-dashboard/',
+    views.admin_dashboard,
     name='admin_dashboard'
 )
 
